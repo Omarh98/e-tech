@@ -1,0 +1,107 @@
+/* -----NAVBAR CSS-------------- */
+
+@media screen and (min-width: 576px) {
+  .nav-search-bar {
+    width: 18rem !important;
+  }
+
+  .navbar-brand {
+    font-family: "Zen Dots", cursive;
+    font-size: 1.7rem;
+  }
+
+  .my-nav-list {
+    text-align: center;
+    list-style: none;
+    /* margin-left: 25%;
+        margin-right: auto; */
+  }
+
+  .nav-item {
+    padding-left: 7rem;
+    padding-right: 2rem;
+  }
+
+  .my-nav-item2 {
+    text-align: right;
+  }
+
+  .navbar-brand {
+    padding-right: 4rem;
+  }
+}
+
+/* -------------   Carousel Area    ---------------------- */
+
+.carousel-container {
+  margin-top: 7rem;
+  margin-bottom: 4rem;
+
+  width: 70%;
+}
+
+@media screen and (max-width: 576px) {
+  .carousel-container {
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+
+    width: 90%;
+  }
+}
+
+/* --------- DEALS AREA --------- */
+
+@media screen and (max-width: 576px) {
+  .deals-text {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .col-sm-12 {
+    margin-top: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .deal-indicators {
+    visibility: hidden;
+  }
+}
+.deals-text{
+    margin-bottom: 1rem;
+}
+
+.deal-indicators {
+  top: 20.7rem;
+}
+.deal-indicators li {
+  border: solid 2px;
+  border-radius: 5px;
+}
+.my-card {
+  width: 18rem;
+  margin: auto;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.my-card img {
+  width: 100%;
+}
+
+/* ----- Footer Area ------- */
+
+.home-footer {
+  background-color: #126e82;
+  margin-top: 2.5rem;
+}
+
+.footer-text {
+  color: whitesmoke;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 0 !important;
+}
+
+.card-img-top {
+  border-radius: 5px;
+}
