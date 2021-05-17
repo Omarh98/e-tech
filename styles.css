@@ -40,7 +40,7 @@
   width: 70%;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 800px) {
   .carousel-container {
     margin-top: 5rem;
     margin-bottom: 4rem;
@@ -51,7 +51,7 @@
 
 /* --------- DEALS AREA --------- */
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 800px) {
   .deals-text {
     font-size: 1.6rem;
     text-align: center;
@@ -68,6 +68,7 @@
 }
 .deals-text{
     margin-bottom: 1rem;
+    color: #696969;
 }
 
 .deal-indicators {
@@ -88,18 +89,49 @@
   width: 100%;
 }
 
+.card-title{
+  font-weight: 400;
+}
+.card-text{
+  font-weight: 300;
+}
+
+.carousel-control-prev-icon{
+  border-radius: 10px;
+  
+}
+.carousel-control-prev{
+  
+}
+.carousel-control-next-icon{
+  border-radius: 10px;
+
+}
+@media screen and (min-width:800px) {
+  .carousel-control-next-icon{
+  position: relative;
+  left: 9rem;
+  }
+  .carousel-control-prev-icon{
+    position: relative;
+    right: 9rem;
+    }
+}
+  
 /* ----- Footer Area ------- */
 
 .home-footer {
-  background-color: #126e82;
+  background-color: #053d4b;
+  
   margin-top: 2.5rem;
 }
 
 .footer-text {
-  color: whitesmoke;
+  color:rgba(245, 245, 245, 0.836);
   padding: 1rem;
   text-align: center;
   margin-bottom: 0 !important;
+  font-weight: 300;
 }
 
 .card-img-top {
