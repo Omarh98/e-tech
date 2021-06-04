@@ -1,0 +1,17 @@
+form{
+    margin-bottom: 2rem;
+}
+
+.spacing-div{
+    width: 100%; 
+    background-color: #3E474F;
+    height: 3rem;
+    
+}
+
+.spacing-div p{
+    text-align: center;
+    padding-top: 0.7rem;
+    color:rgba(245, 245, 245, 0.836);
+    font-weight: 300;
+}
