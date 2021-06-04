@@ -1,9 +1,15 @@
 const express = require("express");
 // const bodyParser = require('body-parser');
+const crypto = require('crypto');
+const algorithm = 'aes-256-cbc';
+const key = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
 const mongoose = require ('mongoose');
 const app = express();
 const User = require('./user');
 var loggedIn=false;
+var loggedEmail="";
+var loggedPassword="";
 const dbURI = 'mongodb+srv://admin:omar1998@e-tech.w0r6k.mongodb.net/e-tech?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
@@ -49,13 +55,46 @@ app.post("/login", (req, res) => {
         if(user){
             loggedIn=true;
             console.log(user.firstName +" "+user.lastName +" is now logged in");
+            loggedEmail=user.email;
+            loggedPassword=user.password;
         }
         else{
             console.log("Email or password may be invalid.");
             loggedIn=false;
+            loggedEmail="";
+            loggedPassword="";
         }
     });
+
   res.redirect("/");
 });
 
-//app.listen(process.env.port || 3000);
+app.get('/check',(req,res)=>{
+        
+        const encEmail=encrypt(loggedEmail);
+        const encPassword=encrypt(loggedPassword);
+    var data ={
+        loggedIn,
+       encEmail,
+       encPassword
+    };
+    var JSONdata = JSON.stringify(data);
+    res.send(JSONdata);
+})
+
+
+function encrypt(text) {
+    let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
+    let encrypted = cipher.update(text);
+    encrypted = Buffer.concat([encrypted, cipher.final()]);
+    return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
+   }
+   
+   function decrypt(text) {
+    let iv = Buffer.from(text.iv, 'hex');
+    let encryptedText = Buffer.from(text.encryptedData, 'hex');
+    let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(key), iv);
+    let decrypted = decipher.update(encryptedText);
+    decrypted = Buffer.concat([decrypted, decipher.final()]);
+    return decrypted.toString();
+   }
