@@ -51,12 +51,12 @@ function onLoad() {
         child4.classList.toggle('display-state');
 
     }
-    else if(parsedResponse['encEmail'].length==0){
-        console.log("hi");
-    }
-    else{
-        alert("Login Failed. Please make sure your login credentials are correct.");
-    }
+    // else if(parsedResponse['encEmail'].length==0){
+    //     console.log("hi");
+    // }
+    // else{
+    //     alert("Login Failed. Please make sure your login credentials are correct.");
+    // }
  }
 
 
