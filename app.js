@@ -68,18 +68,25 @@ app.post("/login", (req, res) => {
         else{
             console.log("Email or password may be invalid.");
             loggedIn=false;
-            loggedEmail="";
-            loggedPassword="";
+            loggedEmail="false";
+            loggedPassword="false";
         }
     });
 
   res.redirect("/");
 });
 
-app.get('/check',(req,res)=>{
+app.get('/logincheck',(req,res)=>{
+       console.log(loggedPassword.length);
+       if(loggedPassword.length!=0 && loggedPassword!="false"){
+        var encEmail=encrypt(loggedEmail);
+        var encPassword=encrypt(loggedPassword);
+       }
+       else{
+         var encEmail=loggedEmail;
+         var encPassword = loggedPassword
+       }
         
-        const encEmail=encrypt(loggedEmail);
-        const encPassword=encrypt(loggedPassword);
     var data ={
         loggedIn,
        encEmail,
@@ -89,6 +96,11 @@ app.get('/check',(req,res)=>{
     res.send(JSONdata);
 })
 
+app.post('/logout',(req,res)=>{
+ // console.log("POST CHECK");
+  loggedIn=JSON.parse(req.body.loggedIn);
+ // console.log(req.body.loggedIn);
+});
 
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);

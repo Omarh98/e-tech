@@ -31,6 +31,9 @@
   }
 }
 
+.display-state{
+  display: none;
+}
 /* -------------   Carousel Area    ---------------------- */
 
 .carousel-container {
