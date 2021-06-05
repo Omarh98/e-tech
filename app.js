@@ -34,6 +34,13 @@ app.get("/register", (req, res) => {
   res.sendFile("/register.html");
 });
 
+app.get("/productList", (req, res) => {
+  res.sendFile("/productList.html");
+});
+app.get("/contactUs", (req, res) => {
+  res.sendFile("/contactUs.html");
+});
+
 app.post("/register", (req, res) => {
  // console.log(req.body);
   const user = new User (req.body);

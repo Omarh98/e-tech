@@ -21,6 +21,8 @@
     .nav-item {
       padding-left: 7rem;
       padding-right: 2rem;
+      font-weight: 400;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";;
     }
   
     .my-nav-item2 {
