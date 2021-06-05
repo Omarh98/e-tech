@@ -64,6 +64,9 @@
   .fab{
     color: #132c33;
   }
+  .display-state{
+    display: none;
+  }
   body{
     margin-top:20px;
     color: #1a202c;

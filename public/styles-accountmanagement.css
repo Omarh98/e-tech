@@ -54,7 +54,9 @@
   }
   
   
-  
+  .display-state{
+    display: none;
+  }
   .card-img-top {
     border-radius: 5px;
   }
