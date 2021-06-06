@@ -107,11 +107,11 @@ app.get('/logincheck',(req,res)=>{
           
           console.log("NOT LOGGED IN");
        }
-       console.log("IN LOGIN CHECK");
-       console.log(loggedEmail);
-       console.log(loggedPassword);
-       console.log(encEmail);
-       console.log(encPassword);
+      //  console.log("IN LOGIN CHECK");
+      //  console.log(loggedEmail);
+      //  console.log(loggedPassword);
+      //  console.log(encEmail);
+      //  console.log(encPassword);
     var data ={
         loggedIn,
        encEmail,
@@ -202,12 +202,20 @@ app.post("/Account-Management",(req,res)=>{
            loggedPassword="";
         res.redirect('/');
       });
-
+      
       app.post("/billingInfo",(req,res)=>{
         //console.log(req.body);
         const query = User.where({
-          email: decrypt(encEmail),});
-          query.findOneAndUpdate(query,{cardNumber:req.body.cardNumber , cardHolderName:req.body.cardHolderName , cardType:req.body.cardType ,cardValidTime:req.body.cardValidTime, cardCVC:req.body.cardCVC},{new:true} ,function(err,user){
+          email: loggedEmail,});
+          query.findOneAndUpdate(query,{
+            $push:{'payment':{
+              "cardHolderName":req.body.cardHolderName,
+              "cardNumber":req.body.cardNumber,
+              "cardType":req.body.cardType,
+              "cardValidTime":req.body.cardValidTime,
+              "cardCVC":req.body.cardCVC
+              
+            }}},{new:true} ,function(err,user){
             if (err) {
               res.send(err);
             } 
@@ -224,8 +232,8 @@ app.post("/Account-Management",(req,res)=>{
             if(err)
             console.log(err);
             if(product){
-              console.log(product);
-              console.log("Product Found");
+              //console.log(product);
+              //console.log("Product Found");
             
               }
             else{

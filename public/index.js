@@ -24,10 +24,21 @@ function onLoad() {
    var cardTitle = document.getElementsByClassName('card-title');
    var cardText = document.getElementsByClassName ('card-text');
    var cardBtn = document.getElementsByClassName ('card-btn');
-   for(var i=0;i<parsedResponse.length;i++){
-       cardImg[i].setAttribute('src',parsedResponse[i]['image']);
-       cardTitle[i].innerHTML=parsedResponse[i]['title'];
-       cardText[i].innerHTML = parsedResponse[i]['description'];
+    var filteredResponse=[];
+    var j=0;
+    for(var i=0;i<parsedResponse.length;i++){
+        if(parsedResponse[i]['hot']){
+            filteredResponse[j]=parsedResponse[i];
+            j++;
+        }
+    }
+   for(var i=0;i<filteredResponse.length;i++){
+       if(filteredResponse[i]['hot']){
+        cardImg[i].setAttribute('src',filteredResponse[i]['image[0]']);
+        cardTitle[i].innerHTML=filteredResponse[i]['title'];
+        cardText[i].innerHTML = filteredResponse[i]['description'];
+       }
+       
    }
 }
 
