@@ -34,8 +34,12 @@ const productSchema = new Schema({
         type:String,
         required:true,
     },
+    hot:{
+        type:Boolean,
+        required:true,
+    },
     image:{
-        type:String,
+        type:[String],
         required:true,
     }
 

@@ -28,13 +28,13 @@ function onLoad() {
 
     var image=item[i].getElementsByClassName("image"); //image div
     var img= image[0].firstChild;
-    img.setAttribute("src",parsedResponse[i]['image']);
+    img.setAttribute("src",parsedResponse[i]['image'][0]);
     
-    //console.log(img);
+    //console.log(parsedResponse[i]['image'][0]);
 
     var category=item[i].getElementsByClassName("category");//category div
     var cat= category[0].firstChild;
-    cat.innerHTML=parsedResponse[i]['category'];
+    cat.innerHTML=parsedResponse[i]['Category'];
 
     var itemName=item[i].getElementsByClassName("itemName");//category div
     console.log(itemName);
