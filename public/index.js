@@ -34,7 +34,7 @@ function onLoad() {
     }
    for(var i=0;i<filteredResponse.length;i++){
        if(filteredResponse[i]['hot']){
-        cardImg[i].setAttribute('src',filteredResponse[i]['image[0]']);
+        cardImg[i].setAttribute('src',filteredResponse[i]['image'][0]);
         cardTitle[i].innerHTML=filteredResponse[i]['title'];
         cardText[i].innerHTML = filteredResponse[i]['description'];
        }
