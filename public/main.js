@@ -49,6 +49,7 @@ function onLoad() {
         child2.classList.toggle('display-state');
         child3.classList.toggle('display-state');
         child4.classList.toggle('display-state');
+        
 
     }
     // else if(parsedResponse['encEmail'].length==0){
