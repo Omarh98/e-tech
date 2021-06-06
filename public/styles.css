@@ -18,7 +18,7 @@
   }
 
   .nav-item {
-    padding-left: 7rem;
+    padding-left: 3rem;
     padding-right: 2rem;
   }
 
@@ -114,6 +114,9 @@
 
 .carousel-control-next-icon{
   border-radius: 10px;
+
+}
+.carousel-control-prev {
 
 }
 @media screen and (min-width:800px) {
