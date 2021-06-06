@@ -3,6 +3,7 @@ var child1 = document.getElementById('option1')
 var child2 = document.getElementById('option2');
 var child3 = document.getElementById('option3');
 var child4 = document.getElementById('option4');
+var deleted=false;
 
 const loginReq = new XMLHttpRequest();
 const url= '/logincheck';
@@ -24,7 +25,9 @@ function checkLogout(){
             logoutReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
             var data ={
-                "loggedIn":"false"
+                "loggedIn":"false",
+                "loggedEmail" : "false",
+                "loggedPassword" : "false"
             }
             logoutReq.send(JSON.stringify(data));
         }
@@ -52,19 +55,25 @@ function onLoad() {
         
 
     }
-    // else if(parsedResponse['encEmail'].length==0){
-    //     console.log("hi");
+    // else if(deleted){
+    //     child1.classList.toggle('display-state');
+    //     child2.classList.toggle('display-state');
+    //     child3.classList.toggle('display-state');
+    //     child4.classList.toggle('display-state');
+    //     deleted=false;
     // }
-    // else{
-    //     alert("Login Failed. Please make sure your login credentials are correct.");
-    // }
- }
-
  
 
-
+}
  
  function onError() {
    // handle error here, print message perhaps
    console.log('error receiving async AJAX call');
+ }
+
+
+ function deleteAccount () {
+    
+    deleted=true;
+   
  }

@@ -32,122 +32,34 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile("/login.html");
+  res.sendFile(__dirname+"/public/login.html");
 });
 
 app.get("/register", (req, res) => {
-  res.sendFile("/register.html");
+  res.sendFile(__dirname+"/public/register.html");
 });
 
 app.get("/productList", (req, res) => {
-  res.sendFile("/productList.html");
+  res.sendFile(__dirname+"/public/productList.html");
 });
 app.get("/contactUs", (req, res) => {
-  res.sendFile("/contactUs.html");
+  res.sendFile(__dirname+"/public/contactUs.html");
 });
 app.get("/Account-Management",(req,res)=>{
-  res.sendFile("/Account-Management.html");
+  res.sendFile(__dirname+"/public/Account-Management.html");
 });
 app.get("/billingInfo",(req,res)=>{
   res.sendFile("/");
 });
 
-// const product = new Product ({
-//   title: "MSI GL65 Leopard 10SEK-022",
-// modelnumber: "#12345",
-// specs: ["aasd","afafaf","afafafafa"],
-// price: "500",
-// description: "Intel Core i7-10750H - RTX 2060 - 16 GB Memory - 1 TB HDD - 512 GB SSD - Gaming Laptop" ,
-// color:"black",
-// quantity:"10",
-// image:"https://images10.newegg.com/ProductImageCompressAll1280/34-155-402-V19.jpg",
-// category:"laptop"
-// });
-
-//   product.save()
-//   .then(results => console.log("done"))
-//   .catch(err => console.log(err));
-
 app.post("/register", (req, res) => {
  // console.log(req.body);
   const user = new User (req.body);
   user.save()
-  .then(results => {res.redirect('/'); } )
+  .then(results => {res.redirect('/login'); } )
   .catch(err => console.log(err));
  
 });
-
-
-
-app.post("/Account-Management",(req,res)=>{
-  console.log(req.body);
-  
-  const query = User.where({
-    email: decrypt(encEmail),});
-    
-    query.findOneAndUpdate(query,{firstName: req.body.firstName , lastName: req.body.lastName , phoneNumber: req.body.phoneNumber , streetAddress: req.body.streetAddress , unitAddress: req.body.streetAddress , city: req.body.city , zip: req.body.zip, email:req.body.email ,password: req.body.password,password2: req.body.password },{new:true} ,function(err,user){
-      if (err) {
-        res.send(err);
-      } 
-      else if (user)
-      {
-        console.log(user);
-      }
-    });
-    res.redirect("/");
-    
-  });
-
-  app.post("/Account-Management-Password",(req,res)=>{
-   //console.log(req.body);
-    const query = User.where({
-      email: decrypt(encEmail),});
-      query.findOneAndUpdate(query,{password: req.body.oldPassword , password:req.body.password , password2:req.body.password},{new:true} ,function(err,user){
-        if (err) {
-          res.send(err);
-        } 
-        else if (user)
-        {
-          console.log(user);
-        }
-      });
-      res.redirect("/");
-    });
-
-    app.post("/delAccount",(req,res)=>{
-     // console.log(req.body);
-      const query = User.where({
-        email: decrypt(encEmail),});
-        query.FindOneAndDelete(query,{email:req.body.email},{new:true} ,function(err,user){
-          if (err) {
-            res.send(err);
-          } 
-          else if (user)
-          {
-            console.log(user);
-            loggedIn=false;
-          }
-        });
-        res.redirect("/");
-      });
-      app.post("/billingInfo",(req,res)=>{
-        //console.log(req.body);
-        const query = User.where({
-          email: decrypt(encEmail),});
-          query.findOneAndUpdate(query,{cardNumber:req.body.cardNumber , cardHolderName:req.body.cardHolderName , cardType:req.body.cardType ,cardValidTime:req.body.cardValidTime, cardCVC:req.body.cardCVC},{new:true} ,function(err,user){
-            if (err) {
-              res.send(err);
-            } 
-            else if (user)
-            {
-              console.log(user);
-            }
-          });
-          res.redirect("/");
-        });
-      
- 
-
 
 
 app.post("/login", (req, res) => {
@@ -178,36 +90,25 @@ app.post("/login", (req, res) => {
 });
 
 
-app.get('/productload',(req,res)=>{
-  Product.find(function(err,product){
-    if(err)
-    console.log(err);
-    if(product){
-      console.log(product);
-      console.log("Product Found");
-    
-      }
-    else{
-      
-        console.log("there is no product");
-    }
-    res.send(product);
-
-})
-});
 
 
 app.get('/logincheck',(req,res)=>{
-       console.log(loggedPassword.length);
+      
        if(loggedPassword.length!=0 && loggedPassword!="false"){
          encEmail=encrypt(loggedEmail);
          encPassword=encrypt(loggedPassword);
        }
-       else{
-          encEmail=loggedEmail;
-          encPassword = loggedPassword
+       else if(!loggedIn){
+          encEmail="";
+          encPassword ="";
+          
+          console.log("NOT LOGGED IN");
        }
-        
+       console.log("IN LOGIN CHECK");
+       console.log(loggedEmail);
+       console.log(loggedPassword);
+       console.log(encEmail);
+       console.log(encPassword);
     var data ={
         loggedIn,
        encEmail,
@@ -218,12 +119,104 @@ app.get('/logincheck',(req,res)=>{
 })
 
 app.post('/logout',(req,res)=>{
- // console.log("POST CHECK");
+
   loggedIn=JSON.parse(req.body.loggedIn);
- // console.log(req.body.loggedIn);
+  loggedEmail=JSON.parse(req.body.loggedEmail);
+  loggedPassword=JSON.parse(req.body.loggedPassword);
+  console.log(req.body);
 });
 
 
+
+
+app.post("/Account-Management",(req,res)=>{
+  console.log(req.body);
+  
+  const query = User.where({
+    email: loggedEmail,});
+    
+    query.findOneAndUpdate(query,{firstName: req.body.firstName , lastName: req.body.lastName , phoneNumber: req.body.phoneNumber , streetAddress: req.body.streetAddress , unitAddress: req.body.streetAddress , city: req.body.city , zip: req.body.zip, email:req.body.email ,password: req.body.password,password2: req.body.password },{new:true} ,function(err,user){
+      if (err) {
+        res.send(err);
+      } 
+      else if (user)
+      {
+        console.log(user);
+      }
+    });
+    res.redirect("/Account-Management");
+    
+  });
+
+  app.post("/Account-Management-Password",(req,res)=>{
+   //console.log(req.body);
+    const query = User.where({
+      email: loggedEmail,});
+      query.findOneAndUpdate(query,{password: req.body.oldPassword , password:req.body.password , password2:req.body.password},{new:true} ,function(err,user){
+        if (err) {
+          res.send(err);
+        } 
+        else if (user)
+        {
+          //console.log(user);
+        }
+      });
+      res.redirect("/Account-Management");
+    });
+
+    app.post("/delAccount",(req,res)=>{
+     // console.log(req.body);
+      const query = User.where({
+        email: decrypt(encEmail)});
+        query.findOneAndDelete(query,{email:req.body.email},{new:true} ,function(err,user){
+          if (err) {
+            res.send(err);
+          } 
+         if (!user)
+          {
+           console.log("IN DELTE");
+           
+          }
+        });
+        loggedIn=false;
+           loggedEmail="";
+           loggedPassword="";
+        res.redirect('/');
+      });
+
+      app.post("/billingInfo",(req,res)=>{
+        //console.log(req.body);
+        const query = User.where({
+          email: decrypt(encEmail),});
+          query.findOneAndUpdate(query,{cardNumber:req.body.cardNumber , cardHolderName:req.body.cardHolderName , cardType:req.body.cardType ,cardValidTime:req.body.cardValidTime, cardCVC:req.body.cardCVC},{new:true} ,function(err,user){
+            if (err) {
+              res.send(err);
+            } 
+            else if (user)
+            {
+             // console.log(user);
+            }
+          });
+          res.redirect("/Account-Management");
+        });
+
+        app.get('/productload',(req,res)=>{
+          Product.find(function(err,product){
+            if(err)
+            console.log(err);
+            if(product){
+              console.log(product);
+              console.log("Product Found");
+            
+              }
+            else{
+              
+                console.log("there is no product");
+            }
+            res.send(product);
+        
+        })
+        });
 
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
