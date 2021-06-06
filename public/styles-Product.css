@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+=======
+
+.carousel-container {
+  margin-top: 7rem;
+  margin-bottom: 4rem;
+
+  width: 70%;
+}
+
+.carousel-img{
+  height: 25rem;
+}
+
+@media screen and (max-width: 800px) {
+  .carousel-container {
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+
+    width: 90%;
+  }
+}
+
+
+/* -----NAVBAR CSS-------------- */
+
+>>>>>>> f7e7fc00c4a62dc28111732a178ad604c558bb91
 @media screen and (min-width: 576px) {
   .nav-search-bar {
     width: 18rem !important;
@@ -54,7 +81,12 @@
   font-weight: 300;
 }
 
-
+.gallery-wrap{
+  margin-top: 50px;
+}
+.content{
+  margin-top: 50px;
+}
 
 .card-img-top {
   border-radius: 5px;
@@ -107,4 +139,10 @@ body{
     }
     .item-gallery img{
     margin: auto;
+    }
+    .itemPrice{
+      
+    font-size: 24px;
+    font-weight: 500;
+    color: #6d6e73
     }
