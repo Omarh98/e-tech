@@ -12,11 +12,14 @@ const Product = require('./product');
 var loggedIn=false;
 var loggedEmail="";
 var loggedPassword="";
+var encEmail="";
+var encPassword="";
 const dbURI = 'mongodb+srv://admin:omar1998@e-tech.w0r6k.mongodb.net/e-tech?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
 .then((results) => app.listen(process.env.PORT || 3000))
 .catch((err) => console.log(err));;
+mongoose.set('useFindAndModify', false);
 
 app.use(express.static(__dirname + "/public"));
 
@@ -41,6 +44,12 @@ app.get("/productList", (req, res) => {
 });
 app.get("/contactUs", (req, res) => {
   res.sendFile("/contactUs.html");
+});
+app.get("/Account-Management",(req,res)=>{
+  res.sendFile("/Account-Management.html");
+});
+app.get("/billingInfo",(req,res)=>{
+  res.sendFile("/");
 });
 
 // const product = new Product ({
@@ -68,10 +77,84 @@ app.post("/register", (req, res) => {
  
 });
 
+
+
+app.post("/Account-Management",(req,res)=>{
+  console.log(req.body);
+  
+  const query = User.where({
+    email: decrypt(encEmail),});
+    
+    query.findOneAndUpdate(query,{firstName: req.body.firstName , lastName: req.body.lastName , phoneNumber: req.body.phoneNumber , streetAddress: req.body.streetAddress , unitAddress: req.body.streetAddress , city: req.body.city , zip: req.body.zip, email:req.body.email ,password: req.body.password,password2: req.body.password },{new:true} ,function(err,user){
+      if (err) {
+        res.send(err);
+      } 
+      else if (user)
+      {
+        console.log(user);
+      }
+    });
+    res.redirect("/");
+    
+  });
+
+  app.post("/Account-Management-Password",(req,res)=>{
+   //console.log(req.body);
+    const query = User.where({
+      email: decrypt(encEmail),});
+      query.findOneAndUpdate(query,{password: req.body.oldPassword , password:req.body.password , password2:req.body.password},{new:true} ,function(err,user){
+        if (err) {
+          res.send(err);
+        } 
+        else if (user)
+        {
+          console.log(user);
+        }
+      });
+      res.redirect("/");
+    });
+
+    app.post("/delAccount",(req,res)=>{
+     // console.log(req.body);
+      const query = User.where({
+        email: decrypt(encEmail),});
+        query.FindOneAndDelete(query,{email:req.body.email},{new:true} ,function(err,user){
+          if (err) {
+            res.send(err);
+          } 
+          else if (user)
+          {
+            console.log(user);
+            loggedIn=false;
+          }
+        });
+        res.redirect("/");
+      });
+      app.post("/billingInfo",(req,res)=>{
+        //console.log(req.body);
+        const query = User.where({
+          email: decrypt(encEmail),});
+          query.findOneAndUpdate(query,{cardNumber:req.body.cardNumber , cardHolderName:req.body.cardHolderName , cardType:req.body.cardType ,cardValidTime:req.body.cardValidTime, cardCVC:req.body.cardCVC},{new:true} ,function(err,user){
+            if (err) {
+              res.send(err);
+            } 
+            else if (user)
+            {
+              console.log(user);
+            }
+          });
+          res.redirect("/");
+        });
+      
+ 
+
+
+
 app.post("/login", (req, res) => {
   // console.log(req.body);
     const query = User.where({
         email: req.body.email,
+        
         password : req.body.password,
     });
     query.findOne(function(err,user){
@@ -117,12 +200,12 @@ app.get('/productload',(req,res)=>{
 app.get('/logincheck',(req,res)=>{
        console.log(loggedPassword.length);
        if(loggedPassword.length!=0 && loggedPassword!="false"){
-        var encEmail=encrypt(loggedEmail);
-        var encPassword=encrypt(loggedPassword);
+         encEmail=encrypt(loggedEmail);
+         encPassword=encrypt(loggedPassword);
        }
        else{
-         var encEmail=loggedEmail;
-         var encPassword = loggedPassword
+          encEmail=loggedEmail;
+          encPassword = loggedPassword
        }
         
     var data ={
@@ -139,6 +222,8 @@ app.post('/logout',(req,res)=>{
   loggedIn=JSON.parse(req.body.loggedIn);
  // console.log(req.body.loggedIn);
 });
+
+
 
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
