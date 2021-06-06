@@ -34,6 +34,7 @@ const productSchema = new Schema({
         type:String,
         required:true,
     },
+<<<<<<< HEAD
     hot:{
         type:Boolean,
         required:true,
@@ -42,6 +43,11 @@ const productSchema = new Schema({
         type:[String],
         required:true,
     }
+=======
+    image:[String],
+        
+    
+>>>>>>> 94fa8005c487ccc342ef966a9a4a156432fe8931
 
 },);
 

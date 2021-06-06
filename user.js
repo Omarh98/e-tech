@@ -43,21 +43,29 @@ const userSchema = new Schema (
             type:String,
             required:true,
         },
-        cardNumber:{
-            type:String
-        },
-        cardHolderName:{
-            type:String
-        },
-        cardType:{
-            type:String
-        },
-        cardValidTime:{
-            type:String
-        },
-        cardCVC:{
-            type:String
-        },
+        payment:[{
+            cardNumber:String,
+            cardHolderName:String,
+            cardType:String,
+            cardValidTime:String,
+            cardCVC:String,
+        }],
+
+        // cardNumber:{
+        //     type:Array
+        // },
+        // cardHolderName:{
+        //     type:Array
+        // },
+        // cardType:{
+        //     type:Array
+        // },
+        // cardValidTime:{
+        //     type:Array
+        // },
+        // cardCVC:{
+        //     type:Array
+        // },
         
 
 

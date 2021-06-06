@@ -246,7 +246,7 @@
                   </div>
 
                 </form>
-                <form method="POST" action="/billingInfo" > 
+                <form id="billingVald" method="POST" action="/billingInfo" > 
                   <div class="form-group">
                     <label>Card Number</label>
                     <input name="cardNumber" type="text" class="form-control" id="cardNumber" aria-describedby="cardNameHelp" placeholder="Enter your credit card number">
@@ -254,11 +254,11 @@
                   </div>
                   <div class="form-group">
                     <label>Holder Name</label>
-                    <input name="cardHolderName" type="text" class="form-control" placeholder="Marwan Agamy">
+                    <input name="cardHolderName" id="cardHolderName" type="text" class="form-control" placeholder="Marwan Agamy" required>
                   </div>
                   <div class="form-group">
                     <label>Card Type</label>
-                    <select name="cardType" id="CardType" class="form-control">
+                    <select name="cardType" id="CardType" class="form-control" required>
                       <option selected>Choose...</option>
                       <option>MasterCard</option>
                       <option>Visa</option>
@@ -266,14 +266,15 @@
                   </div>
                   <div class="form-group">
                     <label>Valid Through</label>
-                      <input name="cardValidTime" type="date" class="form-control"  placeholder="MM-YYYY">
+                      <input name="cardValidTime" type="date" class="form-control"  placeholder="MM-YYYY" required>
                   </div>
                   <div class="form-group">
                     <label>CVC</label>
-                    <input name="cardCVC" type="password" class="form-control" id="cardCVC">
+                    <input name="cardCVC" type="number" class="form-control" id="cardCVC">
                   </div>
 
-                  <div><button class="btn btn-info" type="submit">Add Payment Method</button>  </div>
+                  <div><button onclick="validate()" id="submitBtn" class="btn btn-info" type="button">Add Payment Method</button>  </div>
+                  
                   <br>
                   <div class="form-group mb-0">
                     <label class="d-block">Order History</label>
@@ -299,5 +300,6 @@
     ></script>
     <script src="main.js"></script>
 </script>
+ <script src="Account-Management.js"></script>
 </body>
 </html>
