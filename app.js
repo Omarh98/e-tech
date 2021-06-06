@@ -51,6 +51,9 @@ app.get("/Account-Management",(req,res)=>{
 app.get("/billingInfo",(req,res)=>{
   res.sendFile("/");
 });
+app.get("/changeEmail",(req,res)=>{
+  res.sendFile("/");
+});
 
 app.post("/register", (req, res) => {
  // console.log(req.body);
@@ -131,11 +134,11 @@ app.post('/logout',(req,res)=>{
 
 app.post("/Account-Management",(req,res)=>{
   console.log(req.body);
-  
+  console.log(loggedEmail);
   const query = User.where({
     email: loggedEmail,});
     
-    query.findOneAndUpdate(query,{firstName: req.body.firstName , lastName: req.body.lastName , phoneNumber: req.body.phoneNumber , streetAddress: req.body.streetAddress , unitAddress: req.body.streetAddress , city: req.body.city , zip: req.body.zip, email:req.body.email ,password: req.body.password,password2: req.body.password },{new:true} ,function(err,user){
+    query.findOneAndUpdate(query,{firstName: req.body.firstName , lastName: req.body.lastName , phoneNumber: req.body.phoneNumber , streetAddress: req.body.streetAddress , unitAddress: req.body.streetAddress , city: req.body.city , zip: req.body.zip },{new:true} ,function(err,user){
       if (err) {
         res.send(err);
       } 
@@ -152,7 +155,7 @@ app.post("/Account-Management",(req,res)=>{
    //console.log(req.body);
     const query = User.where({
       email: loggedEmail,});
-      query.findOneAndUpdate(query,{password: req.body.oldPassword , password:req.body.password , password2:req.body.password},{new:true} ,function(err,user){
+      query.findOneAndUpdate(query,{ password:req.body.password , password2:req.body.password},{new:true} ,function(err,user){
         if (err) {
           res.send(err);
         } 
@@ -163,6 +166,22 @@ app.post("/Account-Management",(req,res)=>{
       });
       res.redirect("/Account-Management");
     });
+    app.post("/changeEmail",(req,res)=>{
+      //console.log(req.body);
+       const query = User.where({
+         email: loggedEmail,});
+         query.findOneAndUpdate(query,{email:req.body.email},{new:true} ,function(err,user){
+           if (err) {
+             res.send(err);
+           } 
+           else if (user)
+           {
+             //console.log(user);
+           }
+         });
+         res.redirect("/Account-Management");
+       });
+
 
     app.post("/delAccount",(req,res)=>{
      // console.log(req.body);
