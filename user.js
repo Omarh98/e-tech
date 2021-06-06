@@ -42,7 +42,24 @@ const userSchema = new Schema (
         zip:{
             type:String,
             required:true,
-        }
+        },
+        cardNumber:{
+            type:String
+        },
+        cardHolderName:{
+            type:String
+        },
+        cardType:{
+            type:String
+        },
+        cardValidTime:{
+            type:String
+        },
+        cardCVC:{
+            type:String
+        },
+        
+
 
 
     },);
