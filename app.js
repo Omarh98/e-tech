@@ -7,6 +7,8 @@ const iv = crypto.randomBytes(16);
 const mongoose = require ('mongoose');
 const app = express();
 const User = require('./user');
+const Product = require('./product');
+
 var loggedIn=false;
 var loggedEmail="";
 var loggedPassword="";
@@ -40,6 +42,22 @@ app.get("/productList", (req, res) => {
 app.get("/contactUs", (req, res) => {
   res.sendFile("/contactUs.html");
 });
+
+// const product = new Product ({
+//   title: "MSI GL65 Leopard 10SEK-022",
+// modelnumber: "#12345",
+// specs: ["aasd","afafaf","afafafafa"],
+// price: "500",
+// description: "Intel Core i7-10750H - RTX 2060 - 16 GB Memory - 1 TB HDD - 512 GB SSD - Gaming Laptop" ,
+// color:"black",
+// quantity:"10",
+// image:"https://images10.newegg.com/ProductImageCompressAll1280/34-155-402-V19.jpg",
+// category:"laptop"
+// });
+
+//   product.save()
+//   .then(results => console.log("done"))
+//   .catch(err => console.log(err));
 
 app.post("/register", (req, res) => {
  // console.log(req.body);
@@ -75,6 +93,26 @@ app.post("/login", (req, res) => {
 
   res.redirect("/");
 });
+
+
+app.get('/productload',(req,res)=>{
+  Product.find(function(err,product){
+    if(err)
+    console.log(err);
+    if(product){
+      console.log(product);
+      console.log("Product Found");
+    
+      }
+    else{
+      
+        console.log("there is no product");
+    }
+    res.send(product);
+
+})
+});
+
 
 app.get('/logincheck',(req,res)=>{
        console.log(loggedPassword.length);
