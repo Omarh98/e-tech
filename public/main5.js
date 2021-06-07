@@ -8,12 +8,12 @@ var flag3=true;
 loadbillingcards();
 function loadbillingcards(){
     checkoutRequest.open('GET',checkoutURL,true);
-    checkoutRequest.addEventListener('load',onLoad);
+    checkoutRequest.addEventListener('load',onLoad2);
    // checkoutRequest.addEventListener('error',onError);
     checkoutRequest.send();
 }
 
-function onLoad(){
+function onLoad2(){
     var response =this.responseText;
     parsedResponse2=JSON.parse(response);
     console.log(parsedResponse2);
@@ -101,16 +101,17 @@ function usethiscard(x){
         cardChildHeader.classList.add('card-header');
         cardChildBody=document.createElement('div');
         cardChildBody.classList.add('card-body');
+
          labelChild1 = document.createElement("label");
          listChild1 = document.createElement("span");
          labelChild1.innerHTML="Card Number:";
          newBR1 = document.createElement("br");
-         labelChild1.innerHTML=cardNumber;
+         listChild1.innerHTML=" "+ cardNumber;
          labelChild2 = document.createElement("label");
          listChild2 = document.createElement("span");
          labelChild2.innerHTML="Total:";
          newBR2 = document.createElement("br");
-         labelChild2.innerHTML="5000";
+         listChild2.innerHTML=" "+ "5000";
            newLine = document.createElement("hr");
          
          btn=document.createElement("button");
