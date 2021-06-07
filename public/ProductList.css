@@ -68,13 +68,9 @@ body {
 
 body {
     display: grid;
-<<<<<<< HEAD
-    background: #fff;
     /* font-family: 'Manrope', sans-serif */
-=======
     background-color: #f5f5f8; 
-    font-family: 'Manrope', sans-serif
->>>>>>> f7e7fc00c4a62dc28111732a178ad604c558bb91
+    
 }
 
 .mydiv {
