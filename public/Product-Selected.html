@@ -20,28 +20,16 @@
 
 <body>
   <div>
-    <nav
-      class="navbar fixed-top navbar-expand-lg navbar-dark"
-      style="background-color: #132c33"
-    >
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #132c33">
       <a class="navbar-brand" href="#">E-TECH</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav my-nav-list mr-auto">
           <li class="nav-item ">
-            <a class="nav-link" href="index.html"
-              >Home</a
-            >
+            <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item my-nav-item">
             <a class="nav-link" href="ProductList.html">Products</a>
@@ -49,54 +37,37 @@
           <li class="nav-item my-nav-item">
             <a class="nav-link" href="ContactUs.html">Contact Us</a>
           </li>
-          
-          
+
+
           <li class="nav-item dropdown ">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Account
             </a>
-            <div
-              class="dropdown-menu"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item " id="option1" href="login.html">Login</a>
               <a class="dropdown-item" id="option2" href="register.html">Create an Account</a>
-              <a class="dropdown-item display-state" id="option3"  href="Account-Management.html">Manage Account</a>
+              <a class="dropdown-item display-state" id="option3" href="Account-Management.html">Manage Account</a>
               <a class="dropdown-item display-state" id="option4" href="/">Logout</a>
 
             </div>
           </li>
-        <li>
-          <form class="form-inline my-2 my-lg-0">
-            <input
-              class="form-control mr-sm-2 nav-search-bar"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              class="btn btn-outline-secondary my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
-        </li>
-      
-        <li class="nav-item my-nav-item">
-          <a class="navbar-brand" href="cart.html">
-            <img src="images/cart.png" width="30" height="30" alt="">
-          </a>
-         </li> 
-        
+          <li>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2 nav-search-bar" type="search" placeholder="Search"
+                aria-label="Search" />
+              <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+                Search
+              </button>
+            </form>
+          </li>
+
+          <li class="nav-item my-nav-item">
+            <a class="navbar-brand" href="cart.html">
+              <img src="images/cart.png" width="30" height="30" alt="">
+            </a>
+          </li>
+
         </ul>
       </div>
     </nav>
@@ -115,23 +86,23 @@
             <h3 class="title mb-3">MSI GL65 Leopard 10SEK-022 - 15.6" - Intel Core i7-10750H - RTX 2060 - 16 GB Memory -
               1 TB HDD - 512 GB SSD - Gaming Laptop</h3>
 
-            <p class="itemPrice">
+            <p id="price" class="itemPrice">
               $0000
             </p>
             <dl class="item-property">
               <dt>Description</dt>
               <dd>
-                <p>MSI GL65 Leopard 10SEK-022 - 15.6" - Intel Core i7-10750H - RTX 2060 - 16 GB Memory - 1 TB HDD - 512
+                <p id="desc">MSI GL65 Leopard 10SEK-022 - 15.6" - Intel Core i7-10750H - RTX 2060 - 16 GB Memory - 1 TB HDD - 512
                   GB SSD - Gaming Laptop </p>
               </dd>
             </dl>
             <dl class="param param-feature">
-              <dt>Model#</dt>
-              <dd>123456789</dd>
+              <dt>Model Number</dt>
+              <dd id="model">123456789</dd>
             </dl>
             <dl class="param param-feature">
-              <dt>Specs#</dt>
-              <ul>
+              <dt>Specs</dt>
+              <ul id="spec">
                 <li>GeForce RTX 2060 6 GB GDDR6</li>
                 <li>Intel Core i7 10th Gen 10750H (2.60 GHz)</li>
                 <li>16 GB Memory 1 TB HDD 512 GB NVMe SSD</li>
@@ -144,33 +115,29 @@
             </dl>
             <dl class="param param-feature">
               <dt>Color</dt>
-              <dd>Black</dd>
+              <dd id="color">Black</dd>
             </dl>
           </div>
         </div>
 
         <hr>
         <div class="col-sm-5">
-          <div class="gallery-wrap">
-            <div><a href="#"><img width="290px" src="images/laptopimg2.jpg"></a></div>
-            <div class="img-small-wrap">
-              <div class="item-gallery"> <img width="290px" src="images/laptopimg1.jpg"> </div>
-            </div>
+          <div id="gallery" class="gallery-wrap">
+            <img width="250px" src="images/laptopimg2.jpg">
+            <img width="250px" src="images/laptopimg1.jpg">
           </div>
           <dl class="content">
             <dt>Quantity: </dt>
             <dd>
-              <select class="form-control form-control-sm" style="width:70px;">
-                <option> 1 </option>
-                <option> 2 </option>
-                <option> 3 </option>
+              <select size="2" id="quantity" class="form-control form-control-sm" style="width:70px;">
+                
               </select>
             </dd>
           </dl>
           <div class="content">
-          <a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
-          <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add
-            to cart </a>
+            <a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
+            <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add
+              to cart </a>
           </div>
         </div>
 

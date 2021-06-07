@@ -13,16 +13,33 @@ function loadproducts(){
 function onLoad() {
     var response = this.responseText;
     parsedResponse=JSON.parse(response);
-    console.log(parsedResponse);
+    //console.log(parsedResponse);
     document.getElementsByClassName("title mb-3")[0].innerHTML=parsedResponse["title"];
     document.getElementById("model").innerHTML=parsedResponse["modelnumber"];
     document.getElementById("desc").innerHTML=parsedResponse["description"];
     document.getElementById("price").innerHTML=parsedResponse["price"];
     document.getElementById("color").innerHTML=parsedResponse["color"];
-    var image = document.getElementsByClassName("gallery-wrap"); //image div
+    var image = document.getElementById("gallery"); //image div
     console.log(image);
-    var img = image[0].firstChild;
-    //img.setAttribute("src", parsedResponse["image"][0]);
+    var img = image.firstElementChild;
+    var img2 = image.lastElementChild;
+    console.log(img);
+    img.setAttribute("src", parsedResponse["image"][0]);
+    img2.setAttribute("src", parsedResponse["image"][1]);
+
+    var sp = document.getElementById("spec");
+    console.log(sp);
+    console.log(parsedResponse["specs"].length);
+    for (var i=0;i<parsedResponse["specs"].length;i++){
+      sp.children[i].innerHTML=parsedResponse["specs"][i];
+    }
+
+    var qu = document.getElementById("quantity");
+    for (var i=1;i<=eval(parsedResponse["quantity"]);i++){
+      var option =document.createElement('option');
+      option.innerHTML=i;
+      qu.append(option);
+    }
 }
 
   
