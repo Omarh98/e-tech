@@ -1,11 +1,24 @@
 const checkoutRequest = new XMLHttpRequest();
 const checkoutURL = '/loadcards';
+const totalReq= new XMLHttpRequest();
 var parsedResponse2="";
 var flag2=true;
 var flag3=true;
 
-
+loadtotal();
 loadbillingcards();
+
+function loadtotal(){
+totalReq.open('/GET','/gettotal',true);
+totalReq.addEventListener('load',onLoad3);
+
+};
+
+function onLoad3(){
+    var response =this.responseText;
+    parsedResponse2=JSON.parse(response);
+    console.log(parsedResponse2);
+}
 function loadbillingcards(){
     checkoutRequest.open('GET',checkoutURL,true);
     checkoutRequest.addEventListener('load',onLoad2);
