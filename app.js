@@ -109,8 +109,8 @@ app.get('/logincheck',(req,res)=>{
           
           console.log("NOT LOGGED IN");
        }
-      //  console.log("IN LOGIN CHECK");
-      //  console.log(loggedEmail);
+         console.log("IN LOGIN CHECK");
+        console.log(loggedEmail);
       //  console.log(loggedPassword);
       //  console.log(encEmail);
       //  console.log(encPassword);

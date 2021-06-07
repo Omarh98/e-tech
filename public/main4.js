@@ -8,12 +8,14 @@ var prices1=[];
 loadcartitems();
 function loadcartitems() {
   cartRequest.open("GET", cartURL, true);
-  cartRequest.addEventListener("load", onLoad);
+  cartRequest.addEventListener("load", onLoad2);
   cartRequest.addEventListener("error", onError);
   cartRequest.send();
 }
-
-function onLoad() {
+function onError(){
+  console.log("error");
+}
+function onLoad2() {
   var response = this.responseText;
   parsedResponse2 = JSON.parse(response);
   console.log(parsedResponse2[0]);
