@@ -294,6 +294,18 @@ app.post("/Account-Management",(req,res)=>{
           console.log(titleArr);
         });
 
+        app.get('/sendcartitem',(req,res)=>{
+          Product.find({title:{$in:titleArr}},function(err,product){
+            if(err){
+              console.log(err);
+            }
+            if(product){
+              res.send(product);
+            }
+          })
+          
+        });
+
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
     let encrypted = cipher.update(text);
