@@ -3,6 +3,7 @@ const cartURL = "/sendcartitem";
 var parsedResponse2 = "";
 var subtotal=0;
 var total=0;
+var prices1=[];
 
 loadcartitems();
 function loadcartitems() {
@@ -26,8 +27,9 @@ function onLoad() {
   for (var i = 0; i < parsedResponse2.length; i++) {
     document.getElementsByClassName("productName")[i].innerHTML=parsedResponse2[i].title;
     document.getElementsByClassName("productPrice")[i].innerHTML=parsedResponse2[i].price;
-    subtotal+=parsedResponse2[i].price*document.getElementsByClassName("productOrder")[i].value;
-    console.log(subtotal);
+    priceStr=parsedResponse2[i].price.replace("$","");
+    prices1[i]=eval(priceStr);
+  subtotal+=prices1[i]*eval(document.getElementsByClassName("productOrder")[i].value);
     document.getElementsByClassName("productQuantity")[i].innerHTML=parsedResponse2[i].quantity;
     document.getElementsByClassName("productImage")[i].setAttribute("src",parsedResponse2[i].image[0]);
     document.getElementsByClassName("productImage")[i].setAttribute("width","50px");
@@ -35,11 +37,23 @@ function onLoad() {
     
 
   }
-
+  document.getElementById('text-right').innerHTML=subtotal;
+  subtotal=0;
 
 }
 
-function cal (x){
-subtotal+=eval(x.nextElementChild.innerHTML.replace("$",""));
-
+function cal(x){
+  subtotal=0;
+   quantityFields= document.getElementsByClassName('productOrder');
+   priceFields = document.getElementsByClassName('productPrice');
+   quantities=[];
+   prices=[];
+    for(var i=0;i<quantityFields.length;i++){
+      quantities[i]=eval(quantityFields[i].value);
+      price=priceFields[i].innerHTML.replace("$","");
+      prices[i]=eval(price);
+      subtotal+=quantities[i]*prices[i];
+    }
+    
+    document.getElementById('text-right').innerHTML=subtotal;
 }
