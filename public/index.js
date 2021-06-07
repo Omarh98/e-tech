@@ -1,9 +1,27 @@
 const productRequest = new XMLHttpRequest();
 const reqURL = '/productload';
 
+const titleRequest = new XMLHttpRequest();
+const itemURL = '/senditem';
+
+
+
 
 loadproducts();
 
+
+    function sendTitle(element){
+        item=element.previousElementSibling.previousElementSibling.innerHTML;
+    
+        titleRequest.open("POST", itemURL, true);
+        titleRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+        var data= {
+          "title":item
+        }
+        titleRequest.send(JSON.stringify(data));
+        location.href='Product-Selected.html';
+}
 
 function loadproducts(){
     productRequest.open('GET',reqURL,true);
