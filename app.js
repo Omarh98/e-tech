@@ -14,6 +14,7 @@ var loggedEmail="";
 var loggedPassword="";
 var encEmail="";
 var encPassword="";
+var title="";
 const dbURI = 'mongodb+srv://admin:omar1998@e-tech.w0r6k.mongodb.net/e-tech?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
@@ -261,6 +262,32 @@ app.post("/Account-Management",(req,res)=>{
             res.send(payment);
           })
         });
+
+        app.post('/senditem',(req,res)=>{
+            console.log(req.body);
+           title=req.body.title;
+          
+        });
+
+        app.get('/senditem', (req,res)=>{
+          const query = Product.where({
+            title: title
+          });
+            
+            query.findOne(function(err,product){
+              if (err) {
+                res.send(err);
+              } 
+             if (product)
+              {
+                res.send(product);
+
+               // console.log(product);
+              }
+            });
+            
+        });
+
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
     let encrypted = cipher.update(text);

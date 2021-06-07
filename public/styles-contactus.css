@@ -1,36 +1,37 @@
-/* -----NAVBAR CSS-------------- */
-
 @media screen and (min-width: 576px) {
-    .nav-search-bar {
-      width: 18rem !important;
-    }
-  
-    .navbar-brand {
-      font-family: "Zen Dots", cursive;
-      font-size: 1.7rem;
-    }
-  
-    .my-nav-list {
-      text-align: center;
-      list-style: none;
-      /* margin-left: 25%;
-          margin-right: auto; */
-    }
-  
-    .nav-item {
-      padding-left: 7rem;
-      padding-right: 2rem;
-    }
-  
-    .my-nav-item2 {
-      text-align: right;
-    }
-  
-    .navbar-brand {
-      padding-right: 4rem;
-    }
+  .nav-search-bar {
+    width: 18rem !important;
   }
-  
+
+  .navbar-brand {
+    font-family: "Zen Dots", cursive;
+    font-size: 1.7rem;
+  }
+
+  .my-nav-list {
+    text-align: center;
+    list-style: none;
+    /* margin-left: 25%;
+        margin-right: auto; */
+  }
+
+  .nav-item {
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+
+  .my-nav-item2 {
+    text-align: right;
+  }
+
+  .navbar-brand {
+    padding-right: 4rem;
+  }
+}
+
+.display-state{
+  display: none;
+}
 
     
   /* ----- Footer Area ------- */
