@@ -18,10 +18,11 @@ function onLoad() {
     document.getElementById("model").innerHTML=parsedResponse["modelnumber"];
     document.getElementById("desc").innerHTML=parsedResponse["description"];
     document.getElementById("price").innerHTML=parsedResponse["price"];
-    document.getElementById("color").innerHTML=parsedResponse["color"];var image = item[i].getElementsByClassName("image"); //image div
-    var image = document.getElementsByClassName("image"); //image div
+    document.getElementById("color").innerHTML=parsedResponse["color"];
+    var image = document.getElementsByClassName("gallery-wrap"); //image div
+    console.log(image);
     var img = image[0].firstChild;
-    img.setAttribute("src", parsedResponse[i]["image"][0]);
+    //img.setAttribute("src", parsedResponse["image"][0]);
 }
 
   
