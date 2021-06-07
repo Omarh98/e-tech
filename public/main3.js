@@ -33,13 +33,6 @@ function onLoad() {
     for (var i=0;i<parsedResponse["specs"].length;i++){
       sp.children[i].innerHTML=parsedResponse["specs"][i];
     }
-
-    var qu = document.getElementById("quantity");
-    for (var i=1;i<=eval(parsedResponse["quantity"]);i++){
-      var option =document.createElement('option');
-      option.innerHTML=i;
-      qu.append(option);
-    }
 }
 
   

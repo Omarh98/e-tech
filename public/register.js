@@ -6,6 +6,8 @@ const emailRegex=/\S+@\S+\.\S+/
 const phoneRegex=/^(?=\d{11}$)(01)\d+/
 const numberRegex=/[0-9]{5}/
 var correctList = document.createElement('ul');
+const address2bpassed=document.getElementById("inputAddress").value;
+const s=5;
 
 function validate(){
     
@@ -88,3 +90,4 @@ var flag=false;
 function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
+  export {s, address2bpassed};
