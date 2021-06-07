@@ -306,6 +306,10 @@ app.post("/Account-Management",(req,res)=>{
           
         });
 
+        // app.post('/checkout'(req,res)=>{
+        //   orderId=
+        // })
+
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
     let encrypted = cipher.update(text);
