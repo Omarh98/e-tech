@@ -15,6 +15,7 @@ var loggedPassword="";
 var encEmail="";
 var encPassword="";
 var title="";
+var titleArr=[];
 const dbURI = 'mongodb+srv://admin:omar1998@e-tech.w0r6k.mongodb.net/e-tech?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
@@ -264,7 +265,7 @@ app.post("/Account-Management",(req,res)=>{
         });
 
         app.post('/senditem',(req,res)=>{
-            console.log(req.body);
+          //  console.log(req.body);
            title=req.body.title;
           
         });
@@ -286,6 +287,11 @@ app.post("/Account-Management",(req,res)=>{
               }
             });
             
+        });
+
+        app.post('/sendcartitem',(req,res)=>{
+          titleArr.push(req.body.title);
+          console.log(titleArr);
         });
 
 function encrypt(text) {

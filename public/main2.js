@@ -1,6 +1,7 @@
 const productRequest = new XMLHttpRequest();
 const titleRequest = new XMLHttpRequest();
-
+const cartRequest = new XMLHttpRequest();
+const cartURL = '/sendcartitem';
 const url1 = "/productload";
 const url2 = "/senditem";
 
@@ -68,4 +69,15 @@ function ViewDetails(x) {
 function onError() {
   // handle error here, print message perhaps
   console.log("error receiving async AJAX call");
+}
+
+function sendCartItem(btn){
+  cartRequest.open('POST',cartURL,true);
+  cartRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  
+      var data= {
+        "title":btn.parentNode.parentNode.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.textContent
+      }
+      cartRequest.send(JSON.stringify(data));
+        
 }
