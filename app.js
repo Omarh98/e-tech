@@ -245,6 +245,23 @@ app.post("/Account-Management",(req,res)=>{
         
         })
         });
+        app.get('/loadcards',(req,res)=>{
+          const query = User.where(
+            {email:loggedEmail,}
+          );
+          query.findOne(function(err,user){
+            if(err)
+            console.log(err)
+            if(user){
+              console.log("hi");
+              
+            }
+            console.log(user.payment);
+            var payment =user.payment ;
+           // console.log("NEW\n"+payment);
+            res.send(payment);
+          })
+        });
 
         app.post('/senditem',(req,res)=>{
             console.log(req.body);
