@@ -40,7 +40,7 @@
   }
 
   .nav-item {
-    padding-left: 7rem;
+    padding-left: 3rem;
     padding-right: 2rem;
   }
 
@@ -51,6 +51,10 @@
   .navbar-brand {
     padding-right: 4rem;
   }
+}
+
+.display-state{
+  display: none;
 }
 
 
