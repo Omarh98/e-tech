@@ -309,9 +309,14 @@ app.post("/Account-Management",(req,res)=>{
 
         app.post('/gettotal',(req,res)=>{
            total=req.body.total;
+           console.log(total);
         });
 
         app.get('/gettotal',(req,res)=>{
+          var data2={
+            total
+          }
+          console.log(data2);
           res.send(total);
         });
 
