@@ -130,7 +130,7 @@ function usethiscard(x){
 //   {
 //       card.append(cardChild[i] ,document.createElement('br'));
 //   }
-  flag2=false;
+  flag3=false;
 }
 }
 
