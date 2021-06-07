@@ -109,8 +109,8 @@ app.get('/logincheck',(req,res)=>{
           
           console.log("NOT LOGGED IN");
        }
-      //  console.log("IN LOGIN CHECK");
-      //  console.log(loggedEmail);
+         console.log("IN LOGIN CHECK");
+        console.log(loggedEmail);
       //  console.log(loggedPassword);
       //  console.log(encEmail);
       //  console.log(encPassword);
@@ -305,6 +305,10 @@ app.post("/Account-Management",(req,res)=>{
           });
           
         });
+
+        // app.post('/checkout'(req,res)=>{
+        //   orderId=
+        // })
 
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);

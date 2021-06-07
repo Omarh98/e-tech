@@ -7,12 +7,12 @@ const cartURL = '/sendcartitem';
 loadproducts();
 function loadproducts(){
     productRequest.open('GET',url2,true);
-    productRequest.addEventListener('load',onLoad);
+    productRequest.addEventListener('load',onLoad2);
     productRequest.addEventListener('error',onError);
     productRequest.send();
 }
 
-function onLoad() {
+function onLoad2() {
     var response = this.responseText;
     parsedResponse=JSON.parse(response);
     //console.log(parsedResponse);

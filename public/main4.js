@@ -8,12 +8,14 @@ var prices1=[];
 loadcartitems();
 function loadcartitems() {
   cartRequest.open("GET", cartURL, true);
-  cartRequest.addEventListener("load", onLoad);
+  cartRequest.addEventListener("load", onLoad2);
   cartRequest.addEventListener("error", onError);
   cartRequest.send();
 }
-
-function onLoad() {
+function onError(){
+  console.log("error");
+}
+function onLoad2() {
   var response = this.responseText;
   parsedResponse2 = JSON.parse(response);
   console.log(parsedResponse2[0]);
@@ -37,7 +39,9 @@ function onLoad() {
     
 
   }
-  document.getElementById('text-right').innerHTML=subtotal;
+  document.getElementById('text-right').innerHTML="$"+subtotal;
+  document.getElementById('shipping-text').innerHTML="$"+50;
+  document.getElementById('total-text').innerHTML="$"+eval(subtotal+50);
   subtotal=0;
 
 }
@@ -55,5 +59,7 @@ function cal(x){
       subtotal+=quantities[i]*prices[i];
     }
     
-    document.getElementById('text-right').innerHTML=subtotal;
+    document.getElementById('text-right').innerHTML="$"+subtotal;
+    document.getElementById('shipping-text').innerHTML="$"+50;
+    document.getElementById('total-text').innerHTML="$"+eval(subtotal+50);
 }

@@ -5,23 +5,23 @@ var btn = document.getElementById('submitBtn');
 var correctList=document.createElement('ul');
 const billingReq = new XMLHttpRequest();
 const url1= '/loadcards';
-var parsedResponse="";
+var parsedResponse2="";
 var flag2=true;
 var billingBtn = document.getElementById('billingBtn');
 billingBtn.addEventListener('click',loadcards);
 function loadcards(){
     billingReq.open('GET',url1,true);
-    billingReq.addEventListener('load',onLoad);
+    billingReq.addEventListener('load',onLoad2);
     billingReq.addEventListener('error',onError);
     billingReq.send();
 }
 
 
-function onLoad() {
+function onLoad2() {
     var response = this.responseText;
-    parsedResponse=JSON.parse(response);
-    //console.log(parsedResponse);
-    console.log(parsedResponse.length);
+    parsedResponse2=JSON.parse(response);
+    console.log(parsedResponse2);
+    //console.log(parsedResponse2.length);
     
     var card=document.getElementById("addedcard");
       
@@ -29,7 +29,7 @@ function onLoad() {
     var cardChildHeader = [];
     var cardChildBody = [];
    if(flag2){
-    for (var i=0;i<parsedResponse.length;i++ )
+    for (var i=0;i<parsedResponse2.length;i++ )
     {
         
          cardChild[i] = document.createElement("div");
@@ -42,28 +42,28 @@ function onLoad() {
          listChild1 = document.createElement("span");
          labelChild1.innerHTML="Card Holder Name:";
          newBR1 = document.createElement("br");
-        listChild1.innerHTML=" "+parsedResponse[i].cardHolderName;
+        listChild1.innerHTML=" "+parsedResponse2[i].cardHolderName;
          newLine = document.createElement("hr");
 
          labelChild2 = document.createElement("label");
        listChild2 = document.createElement("span");
        labelChild2.innerHTML="Card Number:";
        newBR2 = document.createElement("br");
-        listChild2.innerHTML=" "+parsedResponse[i].cardNumber;
+        listChild2.innerHTML=" "+parsedResponse2[i].cardNumber;
          newLine = document.createElement("hr");
 
          labelChild3 = document.createElement("label");
        listChild3 = document.createElement("span");
        labelChild3.innerHTML="Card Type:";
        newBR3 = document.createElement("br");
-        listChild3.innerHTML=" "+parsedResponse[i].cardType;
+        listChild3.innerHTML=" "+parsedResponse2[i].cardType;
          newLine = document.createElement("hr");
 
          labelChild4 = document.createElement("label");
        listChild4 = document.createElement("span");
        labelChild4.innerHTML="Card Valid till:";
        newBR4 = document.createElement("br");
-        listChild4.innerHTML=" "+parsedResponse[i].cardValidTime;
+        listChild4.innerHTML=" "+parsedResponse2[i].cardValidTime;
          newLine = document.createElement("hr");
 
         cardChildHeader[i].innerHTML="Card "+(i+1);
