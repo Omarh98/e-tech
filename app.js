@@ -15,6 +15,7 @@ var loggedPassword="";
 var encEmail="";
 var encPassword="";
 var title="";
+var total="";
 var titleArr=[];
 const dbURI = 'mongodb+srv://admin:omar1998@e-tech.w0r6k.mongodb.net/e-tech?retryWrites=true&w=majority';
 
@@ -306,9 +307,13 @@ app.post("/Account-Management",(req,res)=>{
           
         });
 
-        // app.post('/checkout'(req,res)=>{
-        //   orderId=
-        // })
+        app.post('/gettotal',(req,res)=>{
+           total=req.body.total;
+        });
+
+        app.get('/gettotal',(req,res)=>{
+          res.send(total);
+        });
 
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);

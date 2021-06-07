@@ -1,5 +1,9 @@
+const { response } = require("express");
+
 const cartRequest = new XMLHttpRequest();
 const cartURL = "/sendcartitem";
+const sendTotal = new XMLHttpRequest();
+
 var parsedResponse2 = "";
 var subtotal=0;
 var total=0;
@@ -62,4 +66,11 @@ function cal(x){
     document.getElementById('text-right').innerHTML="$"+subtotal;
     document.getElementById('shipping-text').innerHTML="$"+50;
     document.getElementById('total-text').innerHTML="$"+eval(subtotal+50);
+    totalReq.open("POST",'/getotal',true);
+    total.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    var data2={
+      "total":(subtotal+50).toString(),
+    }
+    totalReq.send(JSON.stringify(data2));
+
 }

@@ -53,6 +53,6 @@ function onLoad2() {
         }
         cartRequest.send(JSON.stringify(data));
         
-    cartRequest.send();
+   // cartRequest.send();
     
 }
