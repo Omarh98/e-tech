@@ -141,7 +141,7 @@
                                 <td  class="productQuantity">In stock/Not available</td>
                                 <td><input onchange="cal(this)" class="productOrder" width="2rem" class="form-control" type="text" value="1"/></td>
                                 <td class="productPrice" class="text-right">Price</td>
-                                <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                <td class="text-right"><button onclick="removeElement(this)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
                                     </button> </td>
                                   </tr>
                             <tr>
@@ -180,7 +180,7 @@
                             class="btn btn-block btn-outline-secondary">Continue Shopping</button>
                     </div>
                     <div class="col-sm-12 col-md-6 text-right">
-                        <button onclick="window.location.href='checkout.html'"
+                        <button onclick="sendTotalPrice()"
                             class="btn  btn-block btn-outline-success ">Checkout</button>
                     </div>
                 </div>

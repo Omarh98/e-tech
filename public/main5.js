@@ -3,7 +3,7 @@ const checkoutURL = '/loadcards';
 const totalReq= new XMLHttpRequest();
 var parsedResponse2="";
 var parsedResponse3="";
-
+var response5="";
 
 var flag2=true;
 var flag3=true;
@@ -11,16 +11,12 @@ var flag3=true;
 loadtotal();
 loadbillingcards();
 
+
 function loadtotal(){
-totalReq.open('GET','/gettotal',true);
-totalReq.addEventListener('load',onLoad3);
+  totalReq.open("GET",'/sendback',true);
 
-};
-
-function onLoad3(){
-    var response =this.responseText;
-    parsedResponse3=JSON.parse(response);
-    console.log(parsedResponse3);
+  totalReq.addEventListener('load',onLoad3);
+  totalReq.send();
 }
 function loadbillingcards(){
     checkoutRequest.open('GET',checkoutURL,true);
@@ -28,11 +24,16 @@ function loadbillingcards(){
    // checkoutRequest.addEventListener('error',onError);
     checkoutRequest.send();
 }
-
+function onLoad3(){
+  console.log("CALLED again");
+    titleResponse=this.responseText;
+   response5=JSON.parse(titleResponse);
+    //console.log(titleResponse);
+}
 function onLoad2(){
     var response =this.responseText;
     parsedResponse2=JSON.parse(response);
-    console.log(parsedResponse2);
+  //  console.log(parsedResponse2);
 
     var card=document.getElementById("addedcard");
       
@@ -127,13 +128,14 @@ function usethiscard(x){
          listChild2 = document.createElement("span");
          labelChild2.innerHTML="Total:";
          newBR2 = document.createElement("br");
-         listChild2.innerHTML=" "+ "5000";
+         listChild2.innerHTML=" "+ response5;
            newLine = document.createElement("hr");
          
          btn=document.createElement("button");
          btn.innerHTML="Place Order";
+         
          btn.classList.add("btn", "btn-outline-success", "mybtn");
-         btn.setAttribute("onclick","usethiscard(this)");
+         btn.setAttribute("onclick","usethiscard(this);window.location.href='index.html'");
 
         cardChildHeader.innerHTML="Summary";
         cardChildBody.append(labelChild1,listChild1,newBR1,labelChild2,listChild2,newBR2,btn);

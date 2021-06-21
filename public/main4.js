@@ -3,6 +3,7 @@
 const cartRequest = new XMLHttpRequest();
 const cartURL = "/sendcartitem";
 const sendTotal = new XMLHttpRequest();
+const titleReq=new XMLHttpRequest();
 
 var parsedResponse2 = "";
 var subtotal=0;
@@ -46,7 +47,7 @@ function onLoad2() {
   document.getElementById('text-right').innerHTML="$"+subtotal;
   document.getElementById('shipping-text').innerHTML="$"+50;
   document.getElementById('total-text').innerHTML="$"+eval(subtotal+50);
-  subtotal=0;
+
 
 }
 
@@ -66,11 +67,31 @@ function cal(x){
     document.getElementById('text-right').innerHTML="$"+subtotal;
     document.getElementById('shipping-text').innerHTML="$"+50;
     document.getElementById('total-text').innerHTML="$"+eval(subtotal+50);
-    sendTotal.open("POST",'/gettotal',true);
-    sendTotal.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    var data2={
-      "total":"4000"
-    }
-    sendTotal.send(JSON.stringify(data2));
 
+
+}
+
+function sendTotalPrice(){
+  
+ 
+
+  sendTotal.open('POST','/sendsummary',true);
+  sendTotal.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  var data2={
+    "total":(subtotal+50).toString(),
+  };
+  sendTotal.send(JSON.stringify(data2));
+  window.location.href="checkout.html";
+}
+
+function removeElement(btn){
+    title= btn.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
+    const titleReq=new XMLHttpRequest();
+    titleReq.open('POST','/sendDeleted',true);
+    titleReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    var data2={
+      "title":title,
+    };
+    titleReq.send(JSON.stringify(data2));
+    window.location.href="cart.html";
 }

@@ -15,7 +15,7 @@ var loggedPassword="";
 var encEmail="";
 var encPassword="";
 var title="";
-var total="";
+var total="50000";
 var titleArr=[];
 const dbURI = 'mongodb+srv://admin:omar1998@e-tech.w0r6k.mongodb.net/e-tech?retryWrites=true&w=majority';
 
@@ -255,10 +255,10 @@ app.post("/Account-Management",(req,res)=>{
             if(err)
             console.log(err)
             if(user){
-              console.log("hi");
+             // console.log("hi");
               
             }
-            console.log(user.payment);
+           // console.log(user.payment);
             var payment =user.payment ;
            // console.log("NEW\n"+payment);
             res.send(payment);
@@ -289,10 +289,24 @@ app.post("/Account-Management",(req,res)=>{
             });
             
         });
+        app.post('/sendsummary',(req,res)=>{
+          total=req.body.total;
+          console.log("THIS IS POST");
+          console.log(total);
+       });
+
+       app.get('/sendback',(req,res)=>{
+         var data2={
+           total,
+         }
+         console.log("THIS IS GET");
+         res.send(JSON.stringify(total));
+       });
+
 
         app.post('/sendcartitem',(req,res)=>{
           titleArr.push(req.body.title);
-          console.log(titleArr);
+         // console.log(titleArr);
         });
 
         app.get('/sendcartitem',(req,res)=>{
@@ -306,20 +320,11 @@ app.post("/Account-Management",(req,res)=>{
           });
           
         });
-
-        app.post('/gettotal',(req,res)=>{
-           total=req.body.total;
-           console.log(total);
-        });
-
-        app.get('/gettotal',(req,res)=>{
-          var data2={
-            total
-          }
-          console.log(data2);
-          res.send(total);
-        });
-
+        app.post('/sendDeleted',(req,res)=>{
+        index =titleArr.indexOf(req.body.title);
+        titleArr.splice(index,1);
+        })
+   
 function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
     let encrypted = cipher.update(text);
